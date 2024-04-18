@@ -1,7 +1,7 @@
 import datetime
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
-with open("sample1-2.html", mode="r", encoding="utf-8") as file:
+with open("a1-2.html", mode="r", encoding="utf-8") as file:
     template = file.read()
     # sample1-2.htmlを読み込みモードで開く．文字コードはutf-8に指定する．HTMLファイルの中身をtemplateに代入する．ファイルをwithでopenすると，自動的にcloseする．
 
@@ -15,7 +15,22 @@ class MyServerHandler(BaseHTTPRequestHandler):
         # ヘッダの終了を示す．
         dt = datetime.datetime.now()
         # 今日の日付を得る．
-        message = "今日は{a}年{b}月{c}日です．".format(a=dt.year, b=dt.month, c=dt.day)
+        if dt.second % 2 == 0:
+            message = (
+                '<font color="red">現在の時刻は{a}時間{b}分{c}秒です．</font>'.format(
+                    a=dt.hour,
+                    b=dt.minute,
+                    c=dt.second,
+                )
+            )
+        else:
+            message = (
+                '<font color="blue">現在の時刻は{a}時間{b}分{c}秒です．</font>'.format(
+                    a=dt.hour,
+                    b=dt.minute,
+                    c=dt.second,
+                )
+            )
         # 今日の日付が書かれたメッセージを生成する．{a},{b},{c}の部分がそれぞれ年，月，日に置換される．
         html = template.format(title="表示テスト", message=message)
         # HTMLファイルの内容を変更する．{title}と{message}が置換される．
@@ -24,5 +39,5 @@ class MyServerHandler(BaseHTTPRequestHandler):
         return
 
 
-HTTPServer(("", 8001), MyServerHandler).serve_forever()
+HTTPServer(("", 8000), MyServerHandler).serve_forever()
 # HTTPサーバを起動する．
