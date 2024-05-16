@@ -2,24 +2,12 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <title>{{title}}</title>
+    <h1>
+      <title>{{title}}</title>
+    </h1>
   </head>
 
   <body>
-    <h1>{{title}}</h1>
-    <table border="1">
-      <tr>
-        {% for item in schema %}
-        <th>{{item}}</th>
-        {% endfor %}
-      </tr>
-      {% for tuple in table %}
-      <tr>
-        {% for item in tuple %}
-        <td>{{item}}</td>
-        {% endfor %}
-      </tr>
-      {% endfor %}
-    </table>
+    <font color="{{ color }}">現在の時刻は{{hour}}時間{{minute}}分{{second}}秒です.</font>
   </body>
 </html>

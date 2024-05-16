@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{title}}</title>
+  </head>
+
+  <body>
+    <h1>{{title}}</h1>
+    <table border="1">
+      <tr>
+        {% for item in schema %}
+        <th>{{item}}</th>
+        {% endfor %}
+      </tr>
+      {% for tuple in table %}
+      <tr>
+        {% for item in tuple %}
+        <td>{{item}}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
