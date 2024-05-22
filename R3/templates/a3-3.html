@@ -6,6 +6,7 @@
   </head>
 
   <body>
+    <p>today:{{today.year}}/{{today.month}}/{{today.day}}</p>
     <table border="1">
       <tr>
         {% for item in schema %}
@@ -17,7 +18,7 @@
         {% for item in tuple %}
         <td>{{item}}</td>
         {% endfor %}
-        <td>{{event_time|daysLeft}}</td>
+        <td>{{tuple[2]|daysLeft}}</td>
       </tr>
       {% endfor %}
     </table>
