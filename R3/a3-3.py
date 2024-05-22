@@ -17,10 +17,7 @@ table = [
 def period_filter(event_time):
     some_day1 = datetime.strptime(event_time, "%Y/%m/%d")
     today = datetime.today()
-    if some_day1 < today:
-        rest = (-1) * (today - some_day1).days
-    else:
-        rest = (some_day1 - today).days
+    rest = (some_day1 - today).days
     return rest
 
 
@@ -43,4 +40,4 @@ def timetable():
 
 if __name__ == "__main__":
     app.debug = True
-    app.run(host="localhost", port=8000)
+    app.run(host="localhost")

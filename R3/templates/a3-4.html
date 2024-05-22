@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{title}}</title>
+  </head>
+
+  <body>
+    <p>today:{{today.year}}/{{today.month}}/{{today.day}}</p>
+    <table border="1">
+      <tr>
+        {% for item in schema %}
+        <th>{{item}}</th>
+        {% endfor %}
+      </tr>
+      {% for tuple in table %}
+      <tr>
+        {% for item in tuple %}
+        <td>{{item}}</td>
+        {% endfor %}
+        <td>{{days_left(tuple[2])}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
