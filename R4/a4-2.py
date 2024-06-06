@@ -1,47 +1,40 @@
-from flask import Flask, render_template, session, request
+from flask import Flask, request, render_template, session, redirect, url_for
 
 app = Flask(__name__)
-app.secret_key = "abc"
-# セッション変数を利用するためには秘密鍵(secret_key)の登録が必要
+app.secret_key = "your_secret_key"
 
 
-@app.route("/", methods=["GET"])
-# GETメソッドでのアクセスは以下が実行される
-def input():
-
-    return render_template("a4-2.html", title="セッション変数", number=0)
-
-
-@app.route("/", methods=["POST"])
-def count_session():
-    if "count" in session:
-        # "count"という名前のセッション変数を探す．
-        count = session["count"]
-        # あれば変数countに代入する
-    else:
-        # なければ変数countを1に初期化する．
-        count = 1
-
-    message_cookies = "あなたはこのサイトに{}回アクセスしました．".format(count)
-    session["count"] = count + 1
-    # セッション変数を1増やして，更新する．
-    return render_template(
-        "a4-2.html",
-        title="セッション変数",
-        message_cookies=message_cookies,
-    )
+@app.route("/", methods=["GET", "POST"])
+def index():
+    if "x" not in session:
+        session["x"] = 0
+    return render_template("a4-2.html", x=session["x"])
 
 
-def number_session():
-    if "number" in session:
-        num = session["number"]
-    else:
-        num = 0
+@app.route("/calculate", methods=["POST"])
+def calculate():
+    if "x" not in session:
+        session["x"] = 0
 
-    session["number"] = num + 1
-    return render_template("a4-2.html", number=num)
+    x = session["x"]
+    y = int(request.form["inputValue"])
+    operation = request.form["operation"]
+
+    if operation == "add":
+        x += y
+    elif operation == "subtract":
+        x -= y
+    elif operation == "multiply":
+        x *= y
+    elif operation == "divide":
+        if y != 0:
+            x /= y
+        else:
+            return "Error: Division by zero."
+
+    session["x"] = x
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
-    app.debug = True
     app.run(host="localhost", port=8000)
