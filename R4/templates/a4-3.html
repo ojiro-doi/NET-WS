@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>イベントリスト</title>
+    <style>
+      .past {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>イベントリスト</h1>
+    <table border="1">
+      <tr>
+        <th>日程</th>
+        <th>イベント名</th>
+      </tr>
+      {% for date, event in events %}
+      <tr class="{{ 'past' if date < current_date else '' }}">
+        <td>{{ date }}</td>
+        <td>{{ event }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
