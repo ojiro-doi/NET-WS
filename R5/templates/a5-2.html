@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>イベントリスト</title>
+    <style>
+      .past {
+        background-color: #ffdddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>全てのイベントリスト</h1>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>イベント名</th>
+        <th>日付</th>
+        <th>場所</th>
+      </tr>
+      {% for event in all_events %}
+      <tr class="{% if event[2] < current_date %}past{% endif %}">
+        <td>{{ event[0] }}</td>
+        <td>{{ event[1] }}</td>
+        <td>{{ event[2] }}</td>
+        <td>{{ event[3] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h1>オリンピックイベントリスト</h1>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>イベント名</th>
+        <th>日付</th>
+        <th>場所</th>
+      </tr>
+      {% for event in olympic_events %}
+      <tr class="{% if event[2] < current_date %}past{% endif %}">
+        <td>{{ event[0] }}</td>
+        <td>{{ event[1] }}</td>
+        <td>{{ event[2] }}</td>
+        <td>{{ event[3] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
