@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>イベント一覧</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+
+  <body>
+    <h1>イベント一覧</h1>
+
+    <table class="event-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>名称</th>
+          <th>時期</th>
+          <th>場所</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>入学式</td>
+          <td>2022/4</td>
+          <td>上ヶ原キャンパス</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>ネットワーク実習</td>
+          <td>2024/4</td>
+          <td>神戸三田キャンパス</td>
+        </tr>
+        <tr class="future-event">
+          <td>3</td>
+          <td>卒業式</td>
+          <td>2026/3</td>
+          <td>上ヶ原キャンパス</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <footer>
+      <p>Copyright 2023 Ojiro Doi.</p>
+    </footer>
+  </body>
+</html>
