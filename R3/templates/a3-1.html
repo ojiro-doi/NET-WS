@@ -1,13 +1,22 @@
 <!doctype html>
 <html lang="ja">
   <head>
-    <meta charset="utf-8" />
-    <h1>
-      <title>{{title}}</title>
-    </h1>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <style>
+      .even {
+        color: blue;
+      }
+      .odd {
+        color: red;
+      }
+    </style>
   </head>
-
   <body>
-    <font color="{{ color }}">現在の時刻は{{hour}}時間{{minute}}分{{second}}秒です.</font>
+    <div class="container mt-5">
+      <h1>{{ title }}</h1>
+      <p class="{% if second % 2 == 0 %}even{% else %}odd{% endif %}">現在の時刻: {{ hour }}:{{ minute }}:{{ second }}</p>
+    </div>
   </body>
 </html>
