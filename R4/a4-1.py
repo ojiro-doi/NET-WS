@@ -13,15 +13,17 @@ place = ["上ヶ原キャンパス", "三田キャンパス", "上ヶ原キャ�
 @app.route("/", methods=["GET"])
 # GETメソッドでのアクセスは以下が実行される
 def input():
-    id_cookies = request.cookies.get("count")
-    # クッキー変数"count"を読み出し，countに代入する．
+    id_cookies = request.cookies.get("id")
+    # クッキー変数"id"を読み出し，id_cookiesに代入する．
     if id_cookies is None:
-        # クッキー変数"count"が存在しない場合は，countに"1"を代入する．
+        # クッキー変数"id"が存在しない場合は，空文字列を代入する．
         id_cookies = ""
     max_age = 60 * 60 * 24 * 120
     # クッキーの賞味期限を120日にする
-    response = make_response(render_template("a4-1in.html", title="フォームの利用"))
-    response.set_cookie("id_cookies", value=str(id_cookies), max_age=max_age)
+    response = make_response(
+        render_template("a4-1in.html", title="フォームの利用", id=id_cookies)
+    )
+    response.set_cookie("id", value=id_cookies, max_age=max_age)
     return response
 
 
@@ -68,10 +70,11 @@ def cookie():
         )
     )
     response.set_cookie("count", value=str(int(count) + 1), max_age=max_age)
+    response.set_cookie("id", value=str(num), max_age=max_age)
     # クッキー変数"count"にcountに1加えたものを代入する．
     return response
 
 
 if __name__ == "__main__":
     app.debug = True
-    app.run(host="localhost", port=8000)
+    app.run(host="localhost")
