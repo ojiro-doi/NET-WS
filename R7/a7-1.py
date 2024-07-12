@@ -21,6 +21,18 @@ def index():
     return render_template("a7-1.html", events=events)
 
 
+@app.route("/search/event_name", methods=["GET"])
+def search_event_name():
+    event_name = request.args.get("event_name")
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT * FROM events WHERE event_name LIKE ?", ("%" + event_name + "%",)
+    )
+    events = cur.fetchall()
+    return render_template("a7-1.html", events=events)
+
+
 @app.route("/search/date", methods=["GET"])
 def search_date():
     year = request.args.get("year")
