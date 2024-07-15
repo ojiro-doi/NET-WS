@@ -22,10 +22,10 @@ events = {
     },
 }
 
-with open("b1-3in.html", mode="r", encoding="utf-8") as file:
+with open("b1-4in.html", mode="r", encoding="utf-8") as file:
     input_template = file.read()
 
-with open("b1-3out.html", mode="r", encoding="utf-8") as file:
+with open("b1-4out.html", mode="r", encoding="utf-8") as file:
     output_template = file.read()
 
 

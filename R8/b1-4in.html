@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>イベント選択</title>
+  </head>
+  <body>
+    <h1>イベント選択(ラジオボタン)</h1>
+    <form method="post" action="/submit">
+      <label for="event">イベントidを選択してください:</label>
+      <fieldset>
+        <input type="radio" id="event1" name="event" value="1" required />
+        <label for="event1">1</label><br />
+        <input type="radio" id="event2" name="event" value="2" />
+        <label for="event2">2</label><br />
+        <input type="radio" id="event3" name="event" value="3" />
+        <label for="event3">3</label><br />
+      </fieldset>
+      <br />
+      <button type="submit">送信</button>
+    </form>
+  </body>
+</html>
