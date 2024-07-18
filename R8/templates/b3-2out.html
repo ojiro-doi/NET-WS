@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>判定結果</title>
+  </head>
+  <body>
+    <h1>判定結果</h1>
+    <p>{{ date }} は {{ sem_status }} です。</p>
+    {% if days_left is not none %}
+    <p>授業終了日まであと {{ days_left }} 日です。</p>
+    {% endif %}
+    <a href="/">戻る</a>
+  </body>
+</html>
