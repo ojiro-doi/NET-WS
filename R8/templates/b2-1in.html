@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>カレンシーコンバータ</title>
+  </head>
+  <body>
+    <h1>カレンシーコンバータ</h1>
+    <form action="/convert" method="post">
+      <label> <input type="radio" name="currency" value="USD" required /> ドル </label><br />
+      <label> <input type="radio" name="currency" value="EUR" required /> ユーロ </label><br />
+      <label> <input type="radio" name="currency" value="THB" required /> バーツ </label><br />
+      <label> 金額: <input type="number" name="amount" step="100" placeholder="日本円を入力" required />円 </label><br />
+      <button type="submit">両替</button>
+    </form>
+  </body>
+</html>
