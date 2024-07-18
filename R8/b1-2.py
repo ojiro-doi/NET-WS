@@ -25,7 +25,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         today = datetime.datetime.today()
         days_diff = (today - event_date_obj).days
 
-        message = "{}[{}]まであと{}日です．".format(event_name, event_date, days_diff)
+        message = "{}は[{}]まであと{}日です．".format(event_name, event_date, days_diff)
 
         self.send_response(200)
         self.end_headers()

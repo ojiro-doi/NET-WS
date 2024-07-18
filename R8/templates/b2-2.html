@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>イベントカウントダウン</title>
+  </head>
+  <body>
+    <h1>イベントカウントダウン</h1>
+    <form method="post" action="/countdown">
+      <label for="event-name">イベント名:</label>
+      <input type="text" id="event-name" name="event-name" required />
+      <br />
+      <label for="event-date">年月日:</label>
+      <input type="date" id="event-date" name="event-date" required />
+      <br />
+      <button type="submit">計算する</button>
+    </form>
+    {% if message %}
+    <h1>{{ message }}</h1>
+    {% endif %}
+  </body>
+</html>
